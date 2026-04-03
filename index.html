@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>250 تقنية في التلاعب النفسي | لمى فياض</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Deep Psychology Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- TIKTOK PIXEL -->
+    <script>
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+          ttq.load('D691NORC77U6HVGGO320'); // بكسل تيك توك الخاص بك
+          ttq.page();
+        }(window, document, 'ttq');
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        serif: ['Amiri', 'serif'], 
+                        sans: ['Tajawal', 'sans-serif'] 
+                    },
+                    colors: {
+                        dark: {
+                            base: '#050505',
+                            card: '#0f0f11',
+                            red: '#dc2626',
+                            redDark: '#7f1d1d',
+                            text: '#e2e8f0'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 5s ease-in-out infinite',
+                        'pulse-red': 'pulseRed 3s infinite alternate',
+                        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseRed: {
+                            '0%': { textShadow: '0 0 10px rgba(220,38,38,0.2)' },
+                            '100%': { textShadow: '0 0 20px rgba(220,38,38,0.8), 0 0 30px rgba(220,38,38,0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #050505; color: #e2e8f0; overflow-x: hidden; }
+        
+        /* Mind Particles Background */
+        .particles-container { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .particle { position: absolute; background: #dc2626; border-radius: 50%; opacity: 0; animation: rise linear infinite; }
+        @keyframes rise { 0% { opacity: 0; transform: translateY(100vh) scale(0.5); } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { opacity: 0; transform: translateY(-10px) scale(1.5); } }
+
+        /* Dark Glassmorphism */
+        .dark-card {
+            background: rgba(15, 15, 17, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        /* 3D Book Cover Effect */
+        .book-cover {
+            position: relative; transform-style: preserve-3d; perspective: 1000px;
+            box-shadow: -15px 20px 30px rgba(0,0,0,0.8), inset 4px 0 10px rgba(255,255,255,0.05);
+            border-radius: 4px 15px 15px 4px; transition: transform 0.5s ease;
+        }
+        .book-cover::before {
+            content: ''; position: absolute; left: 0; top: 0; width: 15px; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 4px 0 0 4px; z-index: 20; pointer-events: none;
+        }
+        .book-cover:hover { transform: rotateY(-8deg) scale(1.03); }
+
+        /* Warning/Danger Button */
+        .btn-danger {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: #ffffff;
+            position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+        .btn-danger::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg) translateY(-100%); animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 100% { transform: rotate(45deg) translateY(100%); } }
+        .btn-danger:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(220, 38, 38, 0.5); }
+
+        /* Advanced Inputs */
+        .checkout-input-container { position: relative; width: 100%; z-index: 1; }
+        .checkout-input {
+            width: 100%; background: rgba(5, 5, 5, 0.8); border: 1px solid rgba(255,255,255,0.1);
+            color: #ffffff; border-radius: 8px; padding: 18px 16px 8px; font-family: 'Tajawal', sans-serif;
+            transition: all 0.3s ease; appearance: none; outline: none;
+        }
+        .checkout-label {
+            position: absolute; top: 50%; right: 16px; transform: translateY(-50%);
+            color: rgba(226, 232, 240, 0.5); font-family: 'Tajawal', sans-serif; font-size: 1rem;
+            transition: all 0.3s ease; pointer-events: none; background: transparent; padding: 0 4px;
+        }
+        .checkout-input:focus, .checkout-input:not(:placeholder-shown) {
+            border-color: #dc2626; box-shadow: 0 0 10px rgba(220, 38, 38, 0.2); background: rgba(10, 10, 10, 0.9);
+        }
+        .checkout-input:focus ~ .checkout-label, .checkout-input:not(:placeholder-shown) ~ .checkout-label {
+            top: 0; font-size: 0.8rem; color: #dc2626; background: #050505; border-radius: 4px;
+        }
+
+        /* Sales Notification Toast */
+        #sales-toast {
+            position: fixed; top: 20px; left: -400px; z-index: 9999;
+            background: rgba(15, 15, 17, 0.95); backdrop-filter: blur(10px); border: 1px solid #dc2626;
+            border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #sales-toast.show { left: 20px; }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed; bottom: 85px; right: 20px; z-index: 100;
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 30px; box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+            width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.6); }
+        .wa-ping { position: absolute; width: 100%; height: 100%; background-color: #25d366; border-radius: 50%; z-index: -1; animation: ping-slow 2s infinite; }
+    </style>
+</head>
+<body class="antialiased selection:bg-dark-red selection:text-white relative">
+
+    <!-- Rising Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/213XXXXXXXXX" target="_blank" class="whatsapp-float">
+        <div class="wa-ping"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <!-- Sales Notification Toast -->
+    <div id="sales-toast" class="hidden md:flex">
+        <div class="relative w-10 h-10 rounded-md overflow-hidden border border-dark-red shrink-0">
+            <img src="https://i.postimg.cc/dtrLMXd8/75230319.png" alt="Book Cover" class="w-full h-full object-cover">
+        </div>
+        <div>
+            <p class="text-white text-sm font-sans">
+                <span id="toast-name" class="font-bold text-dark-red">أحمد</span> من <span id="toast-city" class="font-bold">الجزائر</span>
+            </p>
+            <p class="text-xs text-gray-400 font-sans mt-1">حصل على <span id="toast-qty" class="text-white">النسخة الإلكترونية</span> للتو 🧠</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <nav class="absolute top-0 w-full z-50 py-6 px-6 flex justify-center border-b border-white/5 bg-dark-base/50 backdrop-blur-md">
+        <h2 class="font-serif text-2xl text-white tracking-widest uppercase opacity-80">علم النفس المظلم</h2>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen pt-24 pb-12 flex items-center justify-center overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-dark-redDark rounded-full blur-[150px] -z-10 opacity-60"></div>
+
+        <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 text-center lg:text-right">
+                <div class="inline-block bg-dark-red/10 border border-dark-red/30 rounded-full px-4 py-1.5 mb-6 gsap-fade-up">
+                    <span class="text-dark-red text-sm font-sans font-bold flex items-center gap-2">
+                        <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        الكتاب الأكثر كشفاً لأسرار العقول
+                    </span>
+                </div>
+                
+                <h1 class="font-serif text-4xl md:text-6xl text-white leading-[1.3] mb-4 drop-shadow-xl gsap-fade-up" style="transition-delay: 0.1s;">
+                    <span class="text-gray-400 text-3xl block mb-2">250 تقنية في</span>
+                    التلاعب النفسي <br>
+                    <span class="text-dark-red text-3xl md:text-5xl mt-2 block animate-pulse-glow">لا تكن الضحية القادمة.</span>
+                </h1>
+                
+                <p class="font-sans text-gray-300 text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 gsap-fade-up" style="transition-delay: 0.2s;">
+                    يكشف لك هذا الكتاب الخرائط السرية لعلم النفس المظلم. تعلم كيف يقرأ المتلاعبون لغة جسدك، وكيف يسيطرون على قراراتك... <strong class="text-white border-b border-dark-red">وتعلم كيف تحمي نفسك منهم إلى الأبد.</strong> للكاتبة لمى فياض.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start gsap-fade-up" style="transition-delay: 0.3s;">
+                    <a href="#order" class="btn-danger w-full sm:w-auto px-10 py-4 rounded-lg font-sans font-bold text-xl flex items-center justify-center gap-3">
+                        اكتشف الأسرار الآن 👁️
+                    </a>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400 font-sans uppercase">ابتداءً من</p>
+                        <p class="text-2xl font-serif text-white">2200 <span class="text-sm text-dark-red">د.ج</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 flex justify-center gsap-scale-in">
+                <div class="w-64 md:w-[350px] h-auto book-cover animate-float relative z-10 border border-white/5">
+                    <img src="https://i.postimg.cc/dtrLMXd8/75230319.png" alt="غلاف 250 تقنية في التلاعب النفسي" class="w-full h-full object-cover rounded-[4px_15px_15px_4px]">
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-96 bg-dark-red/20 blur-[80px] -z-10"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT SECTION -->
+    <section class="py-20 px-4 relative z-10 border-t border-white/5 bg-dark-card/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 gsap-fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">ماذا ستتعلم داخل هذا الكتاب؟</h2>
+                <p class="font-sans text-gray-400 max-w-2xl mx-auto">دليلك الشامل لفك تشفير النوايا الخفية والسيطرة على أي موقف اجتماعي أو مهني.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="dark-card p-8 gsap-stagger-card">
+                    <div class="w-14 h-14 rounded-full bg-dark-red/10 border border-dark-red/30 flex items-center justify-center text-2xl mb-6 shadow-[0_0_15px_rgba(220,38,38,0.2)]">🧠</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">كشف التكتيكات</h3>
+                    <p class="font-sans text-gray-400 leading-relaxed text-sm">
+                        يستعرض 250 تقنية سرية تُستخدم في الإقناع العميق، الخداع، والسيطرة العاطفية على الأشخاص دون أن يدركوا ذلك.
+                    </p>
+                </div>
+                <div class="dark-card p-8 gsap-stagger-card">
+                    <div class="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-2xl mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)]">👁️</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">قراءة لغة الجسد</h3>
+                    <p class="font-sans text-gray-400 leading-relaxed text-sm">
+                        تعلم كيف تفك تشفير نوايا الآخرين من خلال حركاتهم الدقيقة ونظراتهم، لتسبق خطواتهم قبل أن ينطقوا بكلمة.
+                    </p>
+                </div>
+                <div class="dark-card p-8 gsap-stagger-card">
+                    <div class="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-2xl mb-6 shadow-[0_0_15px_rgba(34,197,94,0.2)]">🛡️</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">الوعي والحماية</h3>
+                    <p class="font-sans text-gray-400 leading-relaxed text-sm">
+                        امتلك "درعاً نفسياً" يجعلك محصناً ضد التلاعب من طرف زملاء العمل، النرجسيين، أو حتى في علاقاتك الشخصية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL SOCIAL PROOF SECTION -->
+    <section class="py-24 px-4 bg-[#0a0a0c] border-t border-white/5 relative overflow-hidden">
+        <div class="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-dark-red/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16 gsap-fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-white mb-4">آراء قرائنا <span class="text-dark-red">الحقيقية</span></h2>
+                <p class="font-sans text-gray-400 max-w-2xl mx-auto">تجارب حقيقية لأشخاص تغيرت نظرتهم لمن حولهم بعد قراءة هذا الكتاب.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="dark-card p-6 relative overflow-hidden group gsap-stagger-review">
+                    <div class="absolute top-0 right-0 w-1 h-full bg-dark-red transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex gap-1 text-dark-red text-sm mb-1">★★★★★</div>
+                            <h4 class="font-sans font-bold text-white text-lg">صدمة إيجابية!</h4>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> مشتري مؤكد
+                        </span>
+                    </div>
+                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "صراحة كتاب يخليك تشوف الناس بوجههم الحقيقي. كنت دايما نحس بلي كاين زملاء في الخدمة يستغلوني، بعد ما قريت تقنيات الابتزاز العاطفي فهمت كلش. طبقت واش كاين وصدمتني النتائج! ننصح بيه أي واحد نية زايدة."
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-dark-red/20 flex items-center justify-center text-dark-red font-bold">ك.ر</div>
+                        <div>
+                            <p class="text-white text-sm font-sans">كريم. ر</p>
+                            <p class="text-gray-500 text-xs font-sans">طلب: النسخة الورقية 📖</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dark-card p-6 relative overflow-hidden group gsap-stagger-review">
+                    <div class="absolute top-0 right-0 w-1 h-full bg-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex gap-1 text-dark-red text-sm mb-1">★★★★★</div>
+                            <h4 class="font-sans font-bold text-white text-lg">سلاح نفسي حقيقي</h4>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> مشتري مؤكد
+                        </span>
+                    </div>
+                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "محتوى خطير! 250 تقنية خلاتني نعاود حساباتي مع بزاف ناس قراب ليا. حبيت بزاف فصل لغة الجسد وكيفاش تفهم النوايا قبل ما يهدرو. شريت الـ PDF وصلني في دقيقتو للإيميل، خدمة نقية."
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold">س.م</div>
+                        <div>
+                            <p class="text-white text-sm font-sans">سارة. م</p>
+                            <p class="text-gray-500 text-xs font-sans">طلب: النسخة الإلكترونية 📱</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dark-card p-6 relative overflow-hidden group gsap-stagger-review">
+                    <div class="absolute top-0 right-0 w-1 h-full bg-dark-red transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex gap-1 text-dark-red text-sm mb-1">★★★★★</div>
+                            <h4 class="font-sans font-bold text-white text-lg">يستحق كل دينار</h4>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> مشتري مؤكد
+                        </span>
+                    </div>
+                    <p class="font-sans text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "الكتاب جا مغلف مليح والتوصيل كان سريع. المضمون تاعو تقيل وفيه أمثلة من الواقع تخليك تفهم بالخف. لي حاب يقوي الشخصية تاعو ويتعلم كيفاش مايخليش الناس تلعب بيه لازم يقراه."
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-dark-red/20 flex items-center justify-center text-dark-red font-bold">أ.ع</div>
+                        <div>
+                            <p class="text-white text-sm font-sans">أمين. ع</p>
+                            <p class="text-gray-500 text-xs font-sans">طلب: النسخة الورقية 📖</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANCED CHECKOUT SECTION -->
+    <section id="order" class="py-24 px-4 relative z-10 bg-dark-base border-t border-white/5 scroll-mt-10">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-dark-redDark/20 via-dark-base to-dark-base pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 items-start relative z-10">
+            
+            <div class="lg:col-span-5 gsap-fade-up">
+                <div class="sticky top-24 dark-card p-8 text-center border-t-2 border-t-dark-red relative overflow-hidden">
+                    <h3 class="font-serif text-3xl text-white mb-2 relative z-10">250 تقنية في التلاعب النفسي</h3>
+                    <p class="text-gray-400 font-sans text-sm mb-6 relative z-10">احصل على نسختك الآن</p>
+                    
+                    <div class="w-32 mx-auto mb-6 book-cover shadow-2xl relative z-10">
+                        <img src="https://i.postimg.cc/dtrLMXd8/75230319.png" alt="غلاف" class="w-full h-auto rounded-[2px_8px_8px_2px]">
+                    </div>
+                    
+                    <div class="bg-black/50 rounded-xl p-5 border border-white/5 relative z-10">
+                        <p class="text-sm text-gray-300 font-sans mb-3 text-right flex items-center gap-2">
+                            <span class="text-dark-red">✓</span> متوفر بنسخة إلكترونية (PDF) فورية.
+                        </p>
+                        <p class="text-sm text-gray-300 font-sans text-right flex items-center gap-2">
+                            <span class="text-dark-red">✓</span> متوفر ككتاب ورقي يصلك لباب البيت.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 gsap-fade-up" style="transition-delay: 0.2s;">
+                <div class="mb-8">
+                    <h2 class="font-serif text-4xl text-white mb-3">حدد نوع النسخة <span class="animate-bounce inline-block text-dark-red">👇</span></h2>
+                    <p class="font-sans text-gray-400">اختر الطريقة التي تفضلها لاكتشاف هذه الأسرار.</p>
+                </div>
+
+                <form id="bookOrderForm" class="space-y-6">
+                    <input type="hidden" name="product" id="input_product" value="كتاب التلاعب النفسي - نسخة إلكترونية (PDF)">
+                    <input type="hidden" name="total_price" id="input_total_price" value="2200">
+                    
+                    <!-- Version Selection -->
+                    <div class="space-y-4 mb-8">
+                        <!-- Option 1: PDF Ebook -->
+                        <label class="flex items-center justify-between p-4 border-2 border-dark-red rounded-xl cursor-pointer bg-dark-red/10 transition-all shadow-[0_0_15px_rgba(220,38,38,0.2)] transform hover:scale-[1.01]" id="label-digital">
+                            <div class="flex items-center gap-4">
+                                <div class="relative w-6 h-6 flex items-center justify-center shrink-0">
+                                    <input type="radio" name="format" value="digital" checked class="opacity-0 absolute w-full h-full cursor-pointer peer">
+                                    <div class="w-6 h-6 border-2 border-dark-red rounded-full peer-checked:bg-dark-red transition-colors flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 bg-[#050505] rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-white font-sans font-bold text-lg block">نسخة إلكترونية (PDF) 📱</span>
+                                    <span class="text-gray-400 text-xs font-sans">تصلك فوراً للإيميل (دفع مسبق)</span>
+                                </div>
+                            </div>
+                            <span class="text-white font-serif text-2xl font-bold">2200 د.ج</span>
+                        </label>
+                        
+                        <!-- Option 2: Physical Book -->
+                        <label class="flex items-center justify-between p-4 border-2 border-gray-800 rounded-xl cursor-pointer bg-black/40 transition-all hover:border-gray-600 relative overflow-hidden transform hover:scale-[1.01]" id="label-physical">
+                            <div class="flex items-center gap-4">
+                                <div class="relative w-6 h-6 flex items-center justify-center shrink-0">
+                                    <input type="radio" name="format" value="physical" class="opacity-0 absolute w-full h-full cursor-pointer peer">
+                                    <div class="w-6 h-6 border-2 border-gray-600 rounded-full peer-checked:bg-dark-red peer-checked:border-dark-red transition-colors flex items-center justify-center" id="radio-circle-phys">
+                                        <div class="w-2.5 h-2.5 bg-[#050505] rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-white font-sans font-bold text-lg block">كتاب ورقي (مطبوع) 📖</span>
+                                    <span class="text-gray-400 text-xs font-sans">الدفع عند الاستلام</span>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <span class="text-white font-serif text-2xl font-bold block">2900 د.ج</span>
+                                <span class="text-gray-500 text-[10px] block">+ مصاريف التوصيل</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Shared Inputs (Always visible) -->
+                    <div class="space-y-5">
+                        <div class="checkout-input-container">
+                            <input type="text" name="name" id="name" required placeholder=" " class="checkout-input">
+                            <label for="name" class="checkout-label">الاسم واللقب *</label>
+                        </div>
+                        
+                        <div class="checkout-input-container">
+                            <input type="tel" name="phone" id="phone" required placeholder=" " dir="ltr" class="checkout-input text-right tracking-widest" pattern="^(05|06|07)[0-9]{8}$">
+                            <label for="phone" class="checkout-label">رقم الهاتف (05/06/07) *</label>
+                        </div>
+                        
+                        <!-- Wilaya & Commune (Always visible) -->
+                        <div class="grid grid-cols-2 gap-5">
+                            <div class="checkout-input-container">
+                                <select name="wilaya" id="wilaya-select" required class="checkout-input appearance-none cursor-pointer">
+                                    <option value="" disabled selected></option>
+                                    <option value="01 - أدرار" data-liv="900">01 - أدرار</option><option value="02 - الشلف" data-liv="600">02 - الشلف</option><option value="03 - الأغواط" data-liv="800">03 - الأغواط</option><option value="04 - أم البواقي" data-liv="600">04 - أم البواقي</option><option value="05 - باتنة" data-liv="600">05 - باتنة</option><option value="06 - بجاية" data-liv="600">06 - بجاية</option><option value="07 - بسكرة" data-liv="800">07 - بسكرة</option><option value="08 - بشار" data-liv="900">08 - بشار</option><option value="09 - البليدة" data-liv="500">09 - البليدة</option><option value="10 - البويرة" data-liv="600">10 - البويرة</option><option value="11 - تمنراست" data-liv="1200">11 - تمنراست</option><option value="12 - تبسة" data-liv="600">12 - تبسة</option><option value="13 - تلمسان" data-liv="600">13 - تلمسان</option><option value="14 - تيارت" data-liv="600">14 - تيارت</option><option value="15 - تيزي وزو" data-liv="600">15 - تيزي وزو</option><option value="16 - الجزائر" data-liv="400">16 - الجزائر</option><option value="17 - الجلفة" data-liv="800">17 - الجلفة</option><option value="18 - جيجل" data-liv="600">18 - جيجل</option><option value="19 - سطيف" data-liv="600">19 - سطيف</option><option value="20 - سعيدة" data-liv="600">20 - سعيدة</option><option value="21 - سكيكدة" data-liv="600">21 - سكيكدة</option><option value="22 - سيدي بلعباس" data-liv="600">22 - سيدي بلعباس</option><option value="23 - عنابة" data-liv="600">23 - عنابة</option><option value="24 - قالمة" data-liv="600">24 - قالمة</option><option value="25 - قسنطينة" data-liv="600">25 - قسنطينة</option><option value="26 - المدية" data-liv="600">26 - المدية</option><option value="27 - مستغانم" data-liv="600">27 - مستغانم</option><option value="28 - المسيلة" data-liv="600">28 - المسيلة</option><option value="29 - معسكر" data-liv="600">29 - معسكر</option><option value="30 - ورقلة" data-liv="900">30 - ورقلة</option><option value="31 - وهران" data-liv="600">31 - وهران</option><option value="32 - البيض" data-liv="800">32 - البيض</option><option value="33 - إليزي" data-liv="1200">33 - إليزي</option><option value="34 - برج بوعريريج" data-liv="600">34 - برج بوعريريج</option><option value="35 - بومرداس" data-liv="500">35 - بومرداس</option><option value="36 - الطارف" data-liv="600">36 - الطارف</option><option value="37 - تندوف" data-liv="1200">37 - تندوف</option><option value="38 - تسمسيلت" data-liv="600">38 - تسمسيلت</option><option value="39 - الوادي" data-liv="900">39 - الوادي</option><option value="40 - خنشلة" data-liv="600">40 - خنشلة</option><option value="41 - سوق أهراس" data-liv="600">41 - سوق أهراس</option><option value="42 - تيبازة" data-liv="500">42 - تيبازة</option><option value="43 - ميلة" data-liv="600">43 - ميلة</option><option value="44 - عين الدفلى" data-liv="600">44 - عين الدفلى</option><option value="45 - النعامة" data-liv="800">45 - النعامة</option><option value="46 - عين تموشنت" data-liv="600">46 - عين تموشنت</option><option value="47 - غرداية" data-liv="900">47 - غرداية</option><option value="48 - غليزان" data-liv="600">48 - غليزان</option><option value="49 - تيميمون" data-liv="900">49 - تيميمون</option><option value="50 - برج باجي مختار" data-liv="1200">50 - برج باجي مختار</option><option value="51 - أولاد جلال" data-liv="800">51 - أولاد جلال</option><option value="52 - بني عباس" data-liv="900">52 - بني عباس</option><option value="53 - إن صالح" data-liv="1200">53 - إن صالح</option><option value="54 - إن قزام" data-liv="1200">54 - إن قزام</option><option value="55 - تقرت" data-liv="900">55 - تقرت</option><option value="56 - جانت" data-liv="1200">56 - جانت</option><option value="57 - المغير" data-liv="800">57 - المغير</option><option value="58 - المنيعة" data-liv="900">58 - المنيعة</option>
+                                </select>
+                                <label class="checkout-label bg-[#050505]">الولاية *</label>
+                            </div>
+                            <div class="checkout-input-container">
+                                <input type="text" name="commune" id="commune" required placeholder=" " class="checkout-input">
+                                <label for="commune" class="checkout-label">البلدية *</label>
+                            </div>
+                        </div>
+
+                        <!-- Digital specific field (Email) -->
+                        <div class="checkout-input-container digital-fields transition-all duration-500">
+                            <input type="email" name="email" id="email" required placeholder=" " dir="ltr" class="checkout-input text-right">
+                            <label for="email" class="checkout-label">البريد الإلكتروني (لاستلام الـ PDF) *</label>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info (For PDF ONLY) -->
+                    <div class="payment-info mt-6 p-5 border border-dark-red/40 bg-dark-red/5 rounded-xl transition-all duration-500">
+                        <h4 class="text-white font-sans font-bold mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-dark-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            طرق الدفع للحصول على النسخة الإلكترونية
+                        </h4>
+                        <p class="text-xs text-gray-400 font-sans mb-4 leading-relaxed">
+                            يرجى ملء الاستمارة والضغط على "تأكيد". سيتم التواصل معك عبر الواتساب أو اتصال هاتفي لتزويدك بأحد الحسابات التالية الدفع وإرسال الكتاب فوراً.
+                        </p>
+                        <div class="space-y-2 font-sans text-sm">
+                            <div class="bg-black/50 p-3 rounded border border-white/5 flex justify-between items-center">
+                                <span class="text-gray-400">بريدي موب (RIP):</span>
+                                <span class="text-white font-mono tracking-widest text-xs">سيتم تحديده</span>
+                            </div>
+                            <div class="bg-black/50 p-3 rounded border border-white/5 flex justify-between items-center">
+                                <span class="text-gray-400">حساب CCP:</span>
+                                <span class="text-white font-mono tracking-widest text-xs">سيتم تحديده</span>
+                            </div>
+                            <div class="bg-black/50 p-3 rounded border border-white/5 flex justify-between items-center">
+                                <span class="text-gray-400">Binance Pay (USDT):</span>
+                                <span class="text-yellow-500 font-mono tracking-widest text-xs">متاح</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Summary Board -->
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-[#111111] border border-white/10 rounded-xl p-5 mt-8 shadow-lg relative overflow-hidden">
+                        <div class="flex justify-between text-gray-400 mb-3 font-sans items-center text-sm">
+                            <span>النسخة:</span>
+                            <span id="sum-type" class="text-white font-bold">إلكترونية (PDF)</span>
+                        </div>
+                        <div class="flex justify-between text-gray-400 mb-3 font-sans items-center text-sm">
+                            <span>سعر الكتاب:</span>
+                            <span id="sum-price" class="text-white font-bold">2200 د.ج</span>
+                        </div>
+                        <div class="flex justify-between text-gray-400 mb-4 font-sans items-center text-sm physical-delivery-sum hidden">
+                            <span>التوصيل:</span>
+                            <span id="sum-delivery" class="text-gray-300 font-bold bg-white/5 px-3 py-1 rounded text-xs">يحدد حسب الولاية</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-white/10 pt-4 mt-2">
+                            <span class="text-white font-sans font-bold text-lg">المجموع الكلي:</span>
+                            <span id="sum-total" class="text-3xl font-serif text-white drop-shadow-md">2200 د.ج</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-danger w-full py-5 rounded-lg font-sans font-bold text-xl flex justify-center items-center gap-3 mt-6">
+                        تأكيد وحجز النسخة 🔒
+                    </button>
+                    <p id="payment-note" class="text-center font-sans text-xs text-gray-500 mt-3">يتم تأكيد الدفع عبر التواصل المباشر معك</p>
+                </form>
+
+                <!-- SUCCESS MESSAGE -->
+                <div id="successMsg" class="hidden text-center py-16">
+                    <div class="w-20 h-20 bg-dark-red/10 border-2 border-dark-red rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(220,38,38,0.4)]">
+                        <svg class="w-10 h-10 text-dark-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="font-serif text-3xl text-white mb-3">تم تسجيل طلبك بنجاح!</h3>
+                    <p class="font-sans text-gray-300 mb-6 leading-relaxed text-sm max-w-md mx-auto">
+                        خطوتك الأولى نحو حماية عقلك قد بدأت.<br>
+                        <span class="text-dark-red font-bold mt-2 block">سنتواصل معك في غضون ساعات قليلة من رقم (05/06/07) لتأكيد طلبك.</span>
+                    </p>
+                    
+                    <div class="bg-black/50 border border-white/10 rounded-lg p-4 inline-block">
+                        <p class="text-xs text-gray-500 font-sans uppercase tracking-widest mb-1">رقم الحجز</p>
+                        <p class="text-xl font-mono text-white tracking-widest" id="order-id">#PSY-0000</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#030303] py-8 text-center border-t border-white/5 relative z-10">
+        <h2 class="font-serif text-xl text-gray-600 mb-2">علم النفس المظلم</h2>
+        <p class="font-sans text-xs text-gray-700">جميع الحقوق محفوظة © 2024</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- GSAP ANIMATIONS INITIATION ---
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: { trigger: element, start: "top 85%", toggleActions: "play none none reverse" },
+                    y: 50, opacity: 0, duration: 1, ease: "power3.out"
+                });
+            });
+
+            gsap.from('.gsap-stagger-card', {
+                scrollTrigger: { trigger: ".gsap-stagger-card", start: "top 80%" },
+                y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
+            });
+
+            gsap.from('.gsap-stagger-review', {
+                scrollTrigger: { trigger: ".gsap-stagger-review", start: "top 80%" },
+                x: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out"
+            });
+
+            gsap.from('.gsap-scale-in', {
+                scrollTrigger: { trigger: ".gsap-scale-in", start: "top 85%" },
+                scale: 0.8, opacity: 0, duration: 1.2, ease: "elastic.out(1, 0.7)"
+            });
+
+            // --- Rising Particles Generator ---
+            const particlesContainer = document.getElementById('particles');
+            for(let i=0; i<30; i++) {
+                let p = document.createElement('div');
+                p.className = 'particle';
+                let size = Math.random() * 4 + 1;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(p);
+            }
+
+            // --- Sales Notifications (Toast) ---
+            const toast = document.getElementById('sales-toast');
+            const toastName = document.getElementById('toast-name');
+            const toastCity = document.getElementById('toast-city');
+            const toastQty = document.getElementById('toast-qty');
+            
+            const names = ["سفيان", "محمد", "لينا", "ياسين", "أمينة", "عبد الرؤوف", "أنفال"];
+            const cities = ["الجزائر العاصمة", "وهران", "سطيف", "عنابة", "باتنة", "بومرداس", "تيزي وزو"];
+            const qtys = ["النسخة الإلكترونية", "الكتاب الورقي", "النسخة الإلكترونية"];
+
+            function showToast() {
+                toastName.textContent = names[Math.floor(Math.random() * names.length)];
+                toastCity.textContent = cities[Math.floor(Math.random() * cities.length)];
+                toastQty.textContent = qtys[Math.floor(Math.random() * qtys.length)];
+                
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 4000);
+            }
+            setTimeout(() => { showToast(); setInterval(showToast, 25000); }, 6000);
+
+            // --- Dynamic Form Logic (Ebook vs Physical) ---
+            const radios = document.querySelectorAll('input[name="format"]');
+            
+            const digitalFields = document.querySelector('.digital-fields');
+            const paymentInfo = document.querySelector('.payment-info');
+            const physicalDeliverySum = document.querySelector('.physical-delivery-sum');
+            const paymentNote = document.getElementById('payment-note');
+            
+            const emailInput = document.getElementById('email');
+            const wilayaSelect = document.getElementById('wilaya-select');
+            
+            const labelDigital = document.getElementById('label-digital');
+            const labelPhysical = document.getElementById('label-physical');
+            const radioCirclePhys = document.getElementById('radio-circle-phys');
+            
+            const sumType = document.getElementById('sum-type');
+            const sumPrice = document.getElementById('sum-price');
+            const sumDelivery = document.getElementById('sum-delivery');
+            const sumTotal = document.getElementById('sum-total');
+            const inputProduct = document.getElementById('input_product');
+            const inputTotalPrice = document.getElementById('input_total_price');
+
+            function updatePricingAndFields() {
+                const isDigital = document.querySelector('input[name="format"]:checked').value === 'digital';
+                
+                if (isDigital) {
+                    labelDigital.classList.add('border-dark-red', 'bg-dark-red/10', 'shadow-[0_0_15px_rgba(220,38,38,0.2)]');
+                    labelDigital.classList.remove('border-gray-800', 'bg-black/40');
+                    labelPhysical.classList.remove('border-dark-red', 'bg-dark-red/10', 'shadow-[0_0_15px_rgba(220,38,38,0.2)]');
+                    labelPhysical.classList.add('border-gray-800', 'bg-black/40');
+                    radioCirclePhys.classList.add('border-gray-600');
+                    radioCirclePhys.classList.remove('border-dark-red');
+                    
+                    digitalFields.classList.remove('hidden');
+                    paymentInfo.classList.remove('hidden');
+                    setTimeout(() => { digitalFields.classList.remove('opacity-0'); paymentInfo.classList.remove('opacity-0'); }, 50);
+                    emailInput.setAttribute('required', 'required');
+                } else {
+                    labelPhysical.classList.add('border-dark-red', 'bg-dark-red/10', 'shadow-[0_0_15px_rgba(220,38,38,0.2)]');
+                    labelPhysical.classList.remove('border-gray-800', 'bg-black/40');
+                    radioCirclePhys.classList.remove('border-gray-600');
+                    radioCirclePhys.classList.add('border-dark-red');
+                    labelDigital.classList.remove('border-dark-red', 'bg-dark-red/10', 'shadow-[0_0_15px_rgba(220,38,38,0.2)]');
+                    labelDigital.classList.add('border-gray-800', 'bg-black/40');
+
+                    digitalFields.classList.add('opacity-0');
+                    paymentInfo.classList.add('opacity-0');
+                    setTimeout(() => { digitalFields.classList.add('hidden'); paymentInfo.classList.add('hidden'); }, 300);
+                    emailInput.removeAttribute('required');
+                }
+
+                const basePrice = isDigital ? 2200 : 2900;
+                let deliveryFee = 0;
+                
+                if (wilayaSelect.value !== "") {
+                    deliveryFee = parseInt(wilayaSelect.options[wilayaSelect.selectedIndex].dataset.liv) || 600;
+                    wilayaSelect.nextElementSibling.style.top = "0";
+                    wilayaSelect.nextElementSibling.style.fontSize = "0.8rem";
+                    wilayaSelect.nextElementSibling.style.color = "#dc2626";
+                }
+
+                let finalDelivery = isDigital ? 0 : deliveryFee;
+                let totalPrice = basePrice + finalDelivery;
+
+                sumType.textContent = isDigital ? "إلكترونية (PDF)" : "ورقي (مطبوع)";
+                sumPrice.textContent = basePrice + " د.ج";
+                inputProduct.value = isDigital ? "كتاب التلاعب النفسي - نسخة إلكترونية (PDF)" : "كتاب التلاعب النفسي - كتاب ورقي";
+                
+                if (isDigital) {
+                    physicalDeliverySum.classList.add('hidden');
+                    paymentNote.textContent = "يتم تأكيد الدفع عبر التواصل المباشر معك";
+                } else {
+                    physicalDeliverySum.classList.remove('hidden');
+                    sumDelivery.textContent = (wilayaSelect.value === "") ? 'يحدد حسب الولاية' : finalDelivery + ' د.ج';
+                    paymentNote.textContent = "الدفع نقداً عند استلامك للكتاب لباب بيتك";
+                }
+
+                sumTotal.textContent = totalPrice + ' د.ج';
+                inputTotalPrice.value = totalPrice;
+            }
+
+            radios.forEach(r => r.addEventListener('change', updatePricingAndFields));
+            wilayaSelect.addEventListener('change', updatePricingAndFields);
+
+            updatePricingAndFields();
+
+            // --- Form Submission (Optimistic UI) ---
+            const form = document.getElementById('bookOrderForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMsg');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                submitBtn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> المعالجة...';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.8';
+
+                let formData = new FormData(form);
+                formData.set('total_price', inputTotalPrice.value);
+                formData.set('product', inputProduct.value);
+                
+                fetch(scriptURL, { method: 'POST', body: formData})
+                    .then(() => console.log('Order logged.'))
+                    .catch(error => console.error('Error:', error));
+
+                setTimeout(() => {
+                    const randomID = Math.floor(1000 + Math.random() * 9000);
+                    document.getElementById('order-id').textContent = `#PSY-${randomID}`;
+
+                    form.style.display = 'none';
+                    document.querySelector('.mb-8').style.display = 'none';
+                    successMsg.classList.remove('hidden');
+                    
+                    window.scrollTo({ top: document.getElementById('order').offsetTop - 50, behavior: 'smooth' });
+                    
+                    if(typeof fbq !== 'undefined') { fbq('track', 'Purchase', { value: formData.get('total_price'), currency: 'DZD' }); }
+                    if(typeof ttq !== 'undefined') { ttq.track('CompletePayment', { value: formData.get('total_price'), currency: 'DZD' }); }
+                    
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
