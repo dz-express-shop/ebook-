@@ -17,7 +17,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+    <!-- ========================================== -->
+    <!-- META PIXEL (FACEBOOK) -->
+    <!-- ========================================== -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '880279101448547'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"/></noscript>
+
+    <!-- ========================================== -->
     <!-- TIKTOK PIXEL -->
+    <!-- ========================================== -->
     <script>
         !function (w, d, t) {
           w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
@@ -204,7 +223,7 @@
                     </a>
                     <div class="text-right">
                         <p class="text-xs text-gray-400 font-sans uppercase">ابتداءً من</p>
-                        <p class="text-2xl font-serif text-white">2200 <span class="text-sm text-dark-red">د.ج</span></p>
+                        <p class="text-2xl font-serif text-white">900 <span class="text-sm text-dark-red">د.ج</span></p>
                     </div>
                 </div>
             </div>
@@ -370,7 +389,7 @@
 
                 <form id="bookOrderForm" class="space-y-6">
                     <input type="hidden" name="product" id="input_product" value="كتاب التلاعب النفسي - نسخة إلكترونية (PDF)">
-                    <input type="hidden" name="total_price" id="input_total_price" value="2200">
+                    <input type="hidden" name="total_price" id="input_total_price" value="900">
                     
                     <!-- Version Selection -->
                     <div class="space-y-4 mb-8">
@@ -388,7 +407,7 @@
                                     <span class="text-gray-400 text-xs font-sans">تصلك فوراً للإيميل (دفع مسبق)</span>
                                 </div>
                             </div>
-                            <span class="text-white font-serif text-2xl font-bold">2200 د.ج</span>
+                            <span class="text-white font-serif text-2xl font-bold">900 د.ج</span>
                         </label>
                         
                         <!-- Option 2: Physical Book -->
@@ -406,7 +425,7 @@
                                 </div>
                             </div>
                             <div class="text-left">
-                                <span class="text-white font-serif text-2xl font-bold block">2900 د.ج</span>
+                                <span class="text-white font-serif text-2xl font-bold block">1900 د.ج</span>
                                 <span class="text-gray-500 text-[10px] block">+ مصاريف التوصيل</span>
                             </div>
                         </label>
@@ -479,7 +498,7 @@
                         </div>
                         <div class="flex justify-between text-gray-400 mb-3 font-sans items-center text-sm">
                             <span>سعر الكتاب:</span>
-                            <span id="sum-price" class="text-white font-bold">2200 د.ج</span>
+                            <span id="sum-price" class="text-white font-bold">900 د.ج</span>
                         </div>
                         <div class="flex justify-between text-gray-400 mb-4 font-sans items-center text-sm physical-delivery-sum hidden">
                             <span>التوصيل:</span>
@@ -487,7 +506,7 @@
                         </div>
                         <div class="flex justify-between items-center border-t border-white/10 pt-4 mt-2">
                             <span class="text-white font-sans font-bold text-lg">المجموع الكلي:</span>
-                            <span id="sum-total" class="text-3xl font-serif text-white drop-shadow-md">2200 د.ج</span>
+                            <span id="sum-total" class="text-3xl font-serif text-white drop-shadow-md">900 د.ج</span>
                         </div>
                     </div>
 
@@ -582,7 +601,8 @@
             function showToast() {
                 toastName.textContent = names[Math.floor(Math.random() * names.length)];
                 toastCity.textContent = cities[Math.floor(Math.random() * cities.length)];
-                toastQty.textContent = qtys[Math.floor(Math.random() * qtys.length)];
+                let item = qtys[Math.floor(Math.random() * qtys.length)];
+                toastQty.textContent = item;
                 
                 toast.classList.add('show');
                 setTimeout(() => { toast.classList.remove('show'); }, 4000);
@@ -599,6 +619,7 @@
             
             const emailInput = document.getElementById('email');
             const wilayaSelect = document.getElementById('wilaya-select');
+            const communeInput = document.getElementById('commune');
             
             const labelDigital = document.getElementById('label-digital');
             const labelPhysical = document.getElementById('label-physical');
@@ -640,7 +661,7 @@
                     emailInput.removeAttribute('required');
                 }
 
-                const basePrice = isDigital ? 2200 : 2900;
+                const basePrice = isDigital ? 900 : 1900;
                 let deliveryFee = 0;
                 
                 if (wilayaSelect.value !== "") {
